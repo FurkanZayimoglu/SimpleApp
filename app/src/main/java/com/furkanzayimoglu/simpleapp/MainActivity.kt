@@ -13,26 +13,26 @@ class MainActivity : AppCompatActivity() {
 
         val initialTextViewTranslationY = textView_progress.translationY
 
-        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                 textView_progress.text = progress.toString()
+                textView_progress.text = progress.toString()
 
                 val translateDistance = (initialTextViewTranslationY + progress *
-                        resources.getDimension(R.dimen.text_anim_step )* -1)
+                        resources.getDimension(R.dimen.text_anim_step) * -1)
                 textView_progress.animate().translationY(translateDistance)
-                if(!fromUser)
+                if (!fromUser)
                     textView_progress.animate().setDuration(500).rotationBy(360f)
                         .translationY(initialTextViewTranslationY)
             }
+
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
             }
         })
-        button.setOnClickListener{view ->
+        button.setOnClickListener { view ->
             seekBar.progress = 0
-
 
 
         }
